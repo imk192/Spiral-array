@@ -2,10 +2,10 @@
 using namespace std;
 /*
 	This program is just an example of how you can fill an array in a spiral in C++
-Also in this program, I decided to strengthen some skills of working with classes, 
-so do not judge strictly for the cumbersome code ...
-In general, part of the code in this program can be omitted altogether, again, everything 
-written here to strengthen work with classes
+	Also in this program, I decided to strengthen some skills of working with classes, 
+	so do not judge strictly for the cumbersome code ...
+	In general, part of the code in this program can be omitted altogether, again, everything 
+	written here to strengthen work with classes
 */
 class ClassListWithMods {
 private:
