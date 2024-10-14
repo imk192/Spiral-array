@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 /*
-	Ёта программа €вл€етс€ лишь примером того как можно заполнить массив по спирали на €зыке —++
-	“акже в этой программе € решил укрепить какие то навыки работы с классами, так что не судите строго, за громоздкий код...
-	¬ целом часть кода в этой программе вообще можно опустить, оп€ть же все написанное здесь, дл€ укреплени€ работы с классами
+	This program is just an example of how you can fill an array in a spiral in C++
+Also in this program, I decided to strengthen some skills of working with classes, 
+so do not judge strictly for the cumbersome code ...
+In general, part of the code in this program can be omitted altogether, again, everything 
+written here to strengthen work with classes
 */
 class ClassListWithMods {
 private:
@@ -13,7 +15,7 @@ private:
 	bool l = false;
 	bool d = false;
 	bool up = false;
-	// функци€ заполн€юща€ массив
+	// the function that fills the array
 	void FillArrayPrivate(int** arr, int rows, int cols) {
 		int counter = 1;				
 		for (int i = 0; i < rows; i++)
@@ -26,7 +28,7 @@ private:
 		}
 	}
 public:
-	// конструктор класса ClassListWithMods
+	// class constructor
 	ClassListWithMods(int size) {
 		this->size = size;
 		this->data = new int*[size];
@@ -36,7 +38,7 @@ public:
 		}
 		FillArrayPrivate(data, size, size);
 	};
-	// геттеры и сеттеры
+	// getters and setters
 	int** GetData() {
 		return data;
 	}
@@ -65,7 +67,7 @@ public:
 		this->up = !this->up;
 	}
 
-	// деструктор класса ClassListWithMods
+	// class destructor
 	~ClassListWithMods() {
 		for (int i = 0; i < this->size; i++)
 		{
@@ -75,7 +77,7 @@ public:
 		data = nullptr;
 	};
 
-	// конструктор копировани€ класса ClassListWithMods
+	// class copy constructor
 	ClassListWithMods(const ClassListWithMods& other) {
 		this->size = other.size;
 		this->data = new int*[other.size];
@@ -101,10 +103,10 @@ int main() {
 	ClassListWithMods secondArr(arr);
 	int** copyMainArr = arr.GetData();
 	int** copyArr = secondArr.GetData();
-	// задаем начало движени€ спирали(в нашем случае направо)
+	// setting the beginning of the spiral movement (in our case, to the right)
 	arr.ChangeModeR();
-	while (m < size) { // здесь начало цикла, который будет перебирать все элементы и ставить их согласно задаче.
-		if (arr.GetModeR()) { // условие при движении направо
+	while (m < size) { // (while) which will iterate through all the elements and put them according to the task.
+		if (arr.GetModeR()) { // condition when moving to the right
 			for (int i = left; i <= right; i++)
 			{
 				copyArr[up][i] = copyMainArr[m][n];
@@ -118,7 +120,7 @@ int main() {
 			arr.ChangeModeR();
 			arr.ChangeModeD();
 		}
-		else if (arr.GetModeD()) { // условие при движении вниз
+		else if (arr.GetModeD()) { // condition when moving down
 			for (int i = up; i <= down; i++)
 			{
 				copyArr[i][right] = copyMainArr[m][n];
@@ -132,7 +134,7 @@ int main() {
 			arr.ChangeModeD();
 			arr.ChangeModeL();
 		}
-		else if (arr.GetModeL()) { // условие при движении влево
+		else if (arr.GetModeL()) { // condition when moving to the left
 			for (int i = right; i >= left; i--)
 			{
 				copyArr[down][i] = copyMainArr[m][n];
@@ -146,7 +148,7 @@ int main() {
 			arr.ChangeModeL();
 			arr.ChangeModeUp();
 		}
-		else if (arr.GetModeUp()) { // условие при движении вверх
+		else if (arr.GetModeUp()) { // the condition when moving up
 			for (int i = down; i >= up; i--)
 			{
 				copyArr[i][left] = copyMainArr[m][n];
@@ -167,7 +169,7 @@ int main() {
 	PrintArray(copyArr, size, size);
 	return 0;
 }
-//‘ункци€ вывода массива
+//Array print function
 void PrintArray(int** arr, int rows, int cols) {
 	for (int i = 0; i < rows; i++)
 	{
