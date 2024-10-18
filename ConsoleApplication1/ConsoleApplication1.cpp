@@ -1,4 +1,5 @@
 #include <iostream>
+#include "ClassListWithMods.h" // import class
 using namespace std;
 /*
 	This program is just an example of how you can fill an array in a spiral in C++
@@ -7,93 +8,7 @@ using namespace std;
 	In general, part of the code in this program can be omitted altogether, again, everything 
 	written here to strengthen work with classes
 */
-class ClassListWithMods {
-private:
-	int** data;
-	int size;
-	bool r = false;
-	bool l = false;
-	bool d = false;
-	bool up = false;
-	// the function that fills the array
-	void FillArrayPrivate(int** arr, int rows, int cols) {
-		int counter = 1;				
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < cols; j++)
-			{
-				this->data[i][j] = counter;
-				counter++;
-			}
-		}
-	}
-public:
-	// class constructor
-	ClassListWithMods(int size) {
-		this->size = size;
-		this->data = new int*[size];
-		for (int i = 0; i < size; i++)
-		{
-			this->data[i] = new int[size];
-		}
-		FillArrayPrivate(data, size, size);
-	};
-	// getters and setters
-	int** GetData() {
-		return data;
-	}
-	bool GetModeR() {
-		return this->r;
-	}
-	void ChangeModeR() {
-		this->r = !this->r;
-	}
-	bool GetModeL() {
-		return this->l;
-	}
-	void ChangeModeL() {
-		this->l = !this->l;
-	}
-	bool GetModeD() {
-		return this->d;
-	}
-	void ChangeModeD() {
-		this->d = !this->d;
-	}
-	bool GetModeUp() {
-		return this->up;
-	}
-	void ChangeModeUp() {
-		this->up = !this->up;
-	}
 
-	// class destructor
-	~ClassListWithMods() {
-		for (int i = 0; i < this->size; i++)
-		{
-			delete[] this->data[i];
-		}
-		delete[] this->data;
-		data = nullptr;
-	};
-
-	// class copy constructor
-	ClassListWithMods(const ClassListWithMods& other) {
-		this->size = other.size;
-		this->data = new int*[other.size];
-		for (int i = 0; i < size; i++)
-		{
-			this->data[i] = new int[other.size];
-		}
-		for (int i = 0; i < other.size; i++)
-		{
-			for (int j = 0; j < other.size; j++)
-			{
-				this->data[i][j] = other.data[i][j];
-			}
-		}
-	}
-};
 void PrintArray(int** arr, int rows, int cols);
 int main() {
 	setlocale(LC_ALL, "ru");
